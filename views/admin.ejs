@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AriTron | Admin</title>
+    <link rel="stylesheet" href="/stylesheets/styles.css" />
+  </head>
+  <body>
+    <div class="admin">
+      <h1>Create an admin account</h1>
+      <form>
+        <input
+          type="text"
+          class="border"
+          placeholder="Enter name"
+          name="name"
+        />
+        <input
+          type="email"
+          class="border"
+          placeholder="Enter email"
+          name="email"
+          id="email"
+        />
+        <input
+          type="password"
+          placeholder="Enter password"
+          name="password1"
+          id="password"
+          autocomplete="off"
+          class="border"
+          minlength="6"
+        />
+        <input
+          type="password"
+          placeholder="confirm password"
+          name="cPassword1"
+          id="cPassword"
+          class="border"
+        />
+        <span class="custom-file-upload">
+          <input type="file" name="file" id="file" accept="image/*"/>
+          <label for="file">Upload profile image</label>
+          <span id="file-name">No file selected</span>
+        </span>
+        <div>
+          <button id="btn">Submit</button>
+        </div>
+      </form>
+    </div>
+
+   
+    <script>
+      const form = document.querySelector("form");
+      
+      const fileInput = document.querySelector('#file');
+      const fileName = document.querySelector('#file-name');
+
+  fileInput.addEventListener('change', () => {
+    const file = fileInput.files[0];
+    if (file) {
+      fileName.textContent = file.name;
+    } else {
+      fileName.textContent = 'No file selected';
+    }
+  });
+
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const targetEvent = event.target;
+        const message = confirm("Ok to proceed");
+        // console.log(message)
+        try {
+          if (!message) {
+            console.log("false");
+            alert("submition aborted");
+          } else {
+            let name = targetEvent[0].value;
+            let email = targetEvent[1].value;
+            let password = targetEvent[2].value;
+            let cPassword = targetEvent[3].value;
+            let image = targetEvent[4].files[0];
+            // console.log(image)
+
+            if (email === "") {
+              alert("Email is required");
+              form.email.style.border = "1px solid red";
+            } else if (password != cPassword) {
+              alert("Passwords does not match");
+              form.password1.style.border = "1px solid red";
+              form.cPassword1.style.border = "1px solid red";
+            } else if ((password && cPassword) === "") {
+              alert("Password required");
+              form.password1.style.border = "1px solid red";
+            } else {
+              if (name === "") {
+                name = "Admin";
+              }
+              // alert('correct')
+              // let bodys = { name, email, password,file:image };
+              // let bodyForm = JSON.stringify(bodys);
+              // console.log(bodys)
+
+              // console.log(bodyForm);
+                let formData = new FormData();
+                    formData.append("name", name);
+                    formData.append("email", email);
+                    formData.append("password", password);
+                    formData.append("file", image);
+
+                    for (let pair of formData.entries()) {
+                          console.log(pair[0]+ ', ' + pair[1]); 
+                        }
+
+                    
+              const receive = await fetch("/api/api/index", {
+                method: "POST",
+                // headers: { "Content-Type": "application/json" },
+                // body: bodys,
+                enctype: "multipart/form-data", // set the enctype here
+                body: formData
+              });
+              
+              console.log(receive);
+              const data = await receive.json();
+              if (receive.ok) {
+                // console.log(data);
+                // alert(data.message);
+                let btn = document.getElementById("btn");
+                // !data.message ? (btn.innerHTML = 'submit'): (btn.innerHTML = data.message)
+                // console.log(data, data.message);
+
+                // if(data.ok){
+                btn.style.border = "1px solid rgb(8, 99, 20)";
+                btn.style.background = "rgb(8, 99, 20)";
+                btn.innerHTML = data.message;
+                form.password1.style.border = "none";
+                form.cPassword1.style.border = "none";
+                form.email.style.border = "none";
+                // }
+              } else {
+                btn.style.border = "1px solid red";
+                btn.style.background = "rgb(154, 7, 7)";
+                btn.innerHTML = data.message;
+                // console.log(data.message)
+                // alert(data.message);
+              }
+            }
+          }
+        } catch (error) {
+          alert(error);
+        }
+      });
+    </script>
+  </body>
+</html>

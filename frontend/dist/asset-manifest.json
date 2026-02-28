@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2e036c4f.css",
+    "main.js": "/static/js/main.9455872f.js",
+    "static/media/calc.png": "/static/media/calc.3a28799c774510840cb1.png",
+    "static/media/Screenshot (5).png": "/static/media/Screenshot (5).cb76eb31b00d2741c698.png",
+    "static/media/users.png": "/static/media/users.414352a56e77ee4ceb00.png",
+    "static/media/class-svgrepo-com.svg": "/static/media/class-svgrepo-com.6e95ae68d3c412f05e0c4015117a969c.svg",
+    "static/media/Screenshot (6).png": "/static/media/Screenshot (6).732f79e8a55aa173e9a9.png",
+    "static/media/male-student-studying-svgrepo-com.svg": "/static/media/male-student-studying-svgrepo-com.a3076d51df6c8e2d1b1730314019cda0.svg",
+    "static/media/CANDIDATE TEMPLATE.xlsx": "/static/media/CANDIDATE TEMPLATE.7c2cd261134459510428.xlsx",
+    "static/media/QUESTIONAIRE.xlsx": "/static/media/QUESTIONAIRE.e642868fb450efca3813.xlsx",
+    "static/media/student-reading-svgrepo-com.svg": "/static/media/student-reading-svgrepo-com.658c1b37617d1624ca1d5dec60dadb8b.svg",
+    "static/media/medical-result-svgrepo-com.svg": "/static/media/medical-result-svgrepo-com.3d11a5f7be73b12866f45d174601ec5d.svg",
+    "static/media/question-mark-svgrepo-com.svg": "/static/media/question-mark-svgrepo-com.64601cefb1003fc6d5bc3db157a64d94.svg",
+    "static/media/cards-sd-svgrepo-com.svg": "/static/media/cards-sd-svgrepo-com.f80901b76fd43bf869f0854f95c5bd27.svg",
+    "index.html": "/index.html",
+    "static/media/upload-svgrepo-com.svg": "/static/media/upload-svgrepo-com.2204ebdd3f26c6200689ca344be3aa99.svg",
+    "static/media/books-svgrepo-com.svg": "/static/media/books-svgrepo-com.712ed792ff5554e4c8ae7d67908b8d49.svg",
+    "static/media/settings-alt-2-svgrepo-com (1).svg": "/static/media/settings-alt-2-svgrepo-com (1).32ebc24156ea99930574f074b901c500.svg",
+    "main.2e036c4f.css.map": "/static/css/main.2e036c4f.css.map",
+    "main.9455872f.js.map": "/static/js/main.9455872f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2e036c4f.css",
+    "static/js/main.9455872f.js"
+  ]
+}
