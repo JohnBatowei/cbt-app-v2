@@ -379,8 +379,13 @@ module.exports.updateUser = asyncHandler(async (req, res) => {
   // 💾 Save user
   const updatedUser = await user.save();
 
+  res.status(200).json({
+    message: "User profile updated successfully",
+    updatedUser,
+  });
+  
   // 📩 Send notification email (no password mention)
-  await sendEmail(
+   sendEmail(
     updatedUser.email,
     "Profile Updated Successfully",
     `
@@ -401,10 +406,6 @@ module.exports.updateUser = asyncHandler(async (req, res) => {
     `
   );
 
-  res.status(200).json({
-    message: "User profile updated successfully",
-    updatedUser,
-  });
 });
 
 
